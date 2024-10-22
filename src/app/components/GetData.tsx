@@ -34,7 +34,7 @@ function GetData({ city }: GetdataProps) {
         const data: WeatherData = await response.json();
 
         if (data.current.condition.icon.startsWith("//")) {
-          data.current.condition.icon = "https:" + data.current.condition.icon;
+          data.current.condition.icon = "http:" + data.current.condition.icon;
         }
 
         setWeatherData(data);
