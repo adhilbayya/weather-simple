@@ -23,7 +23,7 @@ function GetData({ city }: GetdataProps) {
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
     const getData = async () => {
-      const api = `http://api.weatherapi.com/v1/current.json?key=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&q=${city}&aqi=no`;
+      const api = `https://api.weatherapi.com/v1/current.json?key=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&q=${city}&aqi=no`;
 
       try {
         const response = await fetch(api);
@@ -34,7 +34,7 @@ function GetData({ city }: GetdataProps) {
         const data: WeatherData = await response.json();
 
         if (data.current.condition.icon.startsWith("//")) {
-          data.current.condition.icon = "http:" + data.current.condition.icon;
+          data.current.condition.icon = "https:" + data.current.condition.icon;
         }
 
         setWeatherData(data);
